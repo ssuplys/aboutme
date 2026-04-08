@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #0d1117;
+    /* Fundo escuro elegante (estilo dark mode) */
+    color: #f8fafc;
+    overflow: hidden;
+    /* Previne a rolagem durante o carregamento */
+    min-height: 100vh;
+}
+
+/* ================= Tela de Carregamento ================= */
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0d1117;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo-symbol {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #ec4899;
+    /* Rosa vibrante */
+    text-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
+    /* Transição suave para o efeito de ampliação */
+    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.6s ease;
+}
+
+/* Classe adicionada ao final do progresso para simular o zoom do logo */
+.logo-symbol.expand {
+    transform: scale(25);
+    opacity: 0;
+}
+
+.progress-bar-container {
+    width: 240px;
+    height: 6px;
+    background-color: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.4s ease;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    /* Inicia zerado e cresce pelo JS */
+    background: linear-gradient(90deg, #ec4899, #f472b6, #fb7185);
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(236, 72, 153, 0.8);
+}
+
+.progress-bar-container.fade-out {
+    opacity: 0;
+}
+
+/* ================= Página Home ================= */
+
+.home-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    padding: 20px;
+
+    /* Fundo gradiente sutil na home */
+    background: radial-gradient(circle at top, #1e1b4b, #0d1117);
+}
+
+.home-page.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Card estilo Glassmorphism */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 3rem 4rem;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #f8fafc, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.05em;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    max-width: 400px;
+    line-height: 1.6;
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+}
