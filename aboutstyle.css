@@ -245,3 +245,91 @@ header {
     letter-spacing: -0.05em;
     text-align: center;
 }
+
+.music_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.too_sweat_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#too_sweat_img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+#play_button_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.play_button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.a_ultima_lagrima_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#a_ultima_lagrima_img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.play_button_a_ultima_lagrima {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#play_button_img_a_ultima_lagrima {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.terceira_musica_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#terceira_musica_img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.play_button_terceira_musica {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#play_button_img_terceira_musica {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
