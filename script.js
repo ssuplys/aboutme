@@ -93,4 +93,21 @@ document.addEventListener("DOMContentLoaded", () => {
             menuIcon.classList.remove("hidden");
         });
     }
+
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+            }
+        });
+    }, {
+        threshold: 0.1 // Gatilho quando 10% do elemento estiver visível
+    });
+
+    reveals.forEach(reveal => {
+        revealObserver.observe(reveal);
+    });
 });

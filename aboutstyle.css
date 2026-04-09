@@ -224,6 +224,7 @@ header {
 
 .music {
     position: relative;
+    top: 7px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -231,8 +232,8 @@ header {
     opacity: 1;
     padding: 2rem;
     width: 100%;
-    min-height: 100vh;
     box-sizing: border-box;
+    margin-bottom: 60px;
 }
 
 #start_music_div {
@@ -332,4 +333,59 @@ header {
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+
+/* ================= Reveal Animation ================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Favorite Games */
+
+.favorite_games {
+    position: relative;
+    top: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    opacity: 1;
+    padding: 2rem;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+
+.game_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.game_container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.game_list {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 2rem;
 }
