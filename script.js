@@ -1,13 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Bloqueia temporariamente dispositivos móveis
-    // const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-
-    if (isMobile) {
-        document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #111; color: #ff4d4d; font-family: \'Inter\', sans-serif; text-align: center; padding: 20px; box-sizing: border-box;"><h1 style="font-size: 1.5rem;">Acesso pelo celular bloqueado temporariamente</h1></div>';
-        document.body.style.margin = '0';
-        document.body.style.overflow = 'hidden';
-        return; // Interrompe o restante do script
-    }
 
     const progressBar = document.getElementById("progress-bar");
     const progressBarContainer = document.querySelector(".progress-bar-container");
