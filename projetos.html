@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Projetos</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='projetosstyle.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <!-- Tela de Carregamento -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader-content">
+            <div id="logo-symbol" class="logo-symbol">&lt;/&gt;</div>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagina principal -->
+
+    <header>
+        <h1 id="header-h1" title="Abrir menu">&#8801</h1>
+    </header>
+
+    <!-- Menu Lateral -->
+    <nav id="side-menu" class="side-menu">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li class="active_menu"><a class="active_menu" href="projetos.html">Projetos</a></li>
+        </ul>
+    </nav>
+    
+    <div class="start-presentation">
+        <h1 id="hi" class="reveal">Meus Projetos</h1>
+        <p class="reveal">Aqui estão alguns dos projetos em que venho trabalhando ultimamente.</p>
+    </div>
+
+    <!-- Você pode criar o container dos projetos aqui depois -->
+
+    <footer>
+        <p>obrigado por assistir</p>
+        <div class="social_links">
+            <a href="https://x.com/ssuplys" class="social_button" target="_blank" title="X (Twitter)">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X (Twitter)" class="social_img" style="filter: invert(1);">
+            </a>
+            <a href="#" onclick="event.preventDefault();" class="social_button" title="Discord">
+                <img src="https://cdn.pixabay.com/photo/2022/10/09/17/21/discord-7509681_1280.png" alt="Discord" class="social_img">
+                <span class="tooltip_text">@ssuplys</span>
+            </a>
+            <a href="https://github.com/ssuplys" class="social_button" target="_blank" title="GitHub">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" class="social_img" style="filter: invert(1);">
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>

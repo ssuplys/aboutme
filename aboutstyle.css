@@ -371,12 +371,42 @@ header {
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    position: relative;
 }
 
 .game_container img {
     width: 200px;
     height: 200px;
     border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.game_container h1 {
+    font-size: 2.5rem;
+    position: absolute;
+    top: -15px;
+    z-index: 10;
+    margin: 0;
+    background: none;
+    -webkit-text-fill-color: #f8fafc;
+    color: #f8fafc;
+    text-shadow: 3px 3px 15px rgba(0,0,0,0.9);
+}
+
+#game1_number {
+    left: 50%;
+    transform: translateX(-135px);
+}
+
+#game2_number {
+    left: 50%;
+    transform: translateX(-145px);
+}
+
+#game3_number {
+    left: 50%;
+    transform: translateX(-140px);
 }
 
 .game_list {
@@ -449,6 +479,75 @@ footer {
     margin-top: -120px;
     position: relative;
     z-index: 10;
+}
+
+.social_links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.social_button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.tooltip_text {
+    visibility: hidden;
+    background-color: #ec4899;
+    color: #f8fafc;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 12px;
+    position: absolute;
+    z-index: 100;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+}
+
+.tooltip_text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #ec4899 transparent transparent transparent;
+}
+
+.social_button:hover .tooltip_text,
+.social_button:focus .tooltip_text,
+.social_button:active .tooltip_text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+}
+
+.social_button:hover {
+    transform: scale(1.2);
+}
+
+.social_img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }
 
 /* ================= Responsividade (Mobile) ================= */
