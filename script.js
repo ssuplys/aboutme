@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Redireciona automaticamente para a outra página após 3 segundos
                 setTimeout(() => {
                     window.location.href = 'about.html';
-                }, 3000);
+                }, 0);
             }
             // Se estiver em outra página, apenas a tela de carregamento será ocultada,
             // e o conteúdo que estiver ali aparecerá normalmente!
