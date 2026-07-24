@@ -1,140 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>aboutme</title>
+    <title>Lys — Sobre Mim</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='aboutstyle.css'>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <!-- Tela de Carregamento -->
+    <!-- Fundo de Luz Ambiente Decorativo -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- Tela de Carregamento com Logo Mais Grossa e Líquido no Fundo -->
     <div id="loading-screen" class="loading-screen">
         <div class="loader-content">
-            <div id="logo-symbol" class="logo-symbol">&lt;/&gt;</div>
-            <div class="progress-bar-container">
-                <div id="progress-bar" class="progress-bar"></div>
+            <div class="liquid-bg-wrapper">
+                <div class="liquid-bg"></div>
+                <div class="liquid-bg-wave"></div>
+                <div id="logo-symbol" class="logo-symbol bold-logo">&lt;/&gt;</div>
             </div>
         </div>
     </div>
 
-    <!-- Pagina principal-->
+    <!-- Cabeçalho & Menu -->
+    <header class="navbar-header">
+        <a href="index.html" class="brand-logo">Lys<span>.</span></a>
 
-    <header>
-        <h1 id="header-h1" title="Abrir menu">&#8801</h1>
+        <div class="header-controls">
+            <button id="lang-toggle" class="control-btn lang-btn" title="Mudar Idioma"
+                aria-label="Mudar Idioma">PT</button>
+            <button id="header-h1" class="menu-btn" title="Abrir menu" aria-label="Abrir menu">≡</button>
+        </div>
     </header>
+
+    <!-- Overlay do Menu -->
+    <div id="menu-backdrop" class="menu-backdrop"></div>
 
     <!-- Menu Lateral -->
     <nav id="side-menu" class="side-menu">
-        <button id="close-menu" class="close-btn">&times;</button>
+        <button id="close-menu" class="close-btn" title="Fechar menu">&times;</button>
+        <div class="menu-header">
+            <span class="menu-title" data-i18n="navTitle">Navegação</span>
+        </div>
         <ul>
-            <li><a href="index.html">Início</a></li>
-            <li class="active_menu"><a class="active_menu" href="about.html">Sobre</a></li>
-            <li><a href="projetos.html">Projetos</a></li>
+            <li><a href="index.html"><span class="nav-num">01</span> <span data-i18n="navHome">Início</span></a></li>
+            <li class="active_menu"><a class="active_menu" href="about.html"><span class="nav-num">02</span> <span
+                        data-i18n="navAbout">Sobre</span></a></li>
+            <li><a href="projetos.html"><span class="nav-num">03</span> <span
+                        data-i18n="navProjects">Projetos</span></a></li>
         </ul>
     </nav>
-    <div class="start-presentation">
-        <h1 id="hi">Oii</h1>
-        <p>meu nome é Lys, tenho 16 anos, abaixo vai uma breve introdução sobre mim</p>
-    </div>
-    <div class="music">
-        <h1 id="start_music_div" class="reveal">essas minhas musicas favoritas</h1>
 
-        <div class="music_list">
-            <div class="too_sweat_container reveal">
-                <img src="https://i.scdn.co/image/ab67616d0000b273be392334d99f82bc410cb239" alt="" id="too_sweat_img">
-                <p class="music_description">Too Sweet - Hozier</p>
-                <a href="https://open.spotify.com/intl-pt/track/3HMY0r2BAdpasXMY8rseR0?si=289240074a854832"
-                    class="play_button" target="_blank">
-                    <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png"
-                        alt="" id="play_button_img">
-                </a>
-            </div>
-            <div class="a_ultima_lagrima_container reveal">
-                <img src="https://i.scdn.co/image/ab67616d0000b273f107649846921b409dd7e1bd" alt=""
-                    id="a_ultima_lagrima_img">
-                <p class="music_description">A Última Lágrima - Alec'</p>
-                <a href="https://open.spotify.com/intl-pt/track/6fX0OOsIIDSHfogMl10XEi?si=5cc36d51b06e4f42"
-                    class="play_button_a_ultima_lagrima" target="_blank">
-                    <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png"
-                        alt="" id="play_button_img_a_ultima_lagrima">
-                </a>
-            </div>
+    <!-- Apresentação Hero -->
+    <main>
+        <section class="start-presentation">
+            <div class="badge-pill" data-i18n="badgeAbout">DevSecOps</div>
+            <h1 id="hi" data-i18n="heroTitle">Olá, eu sou <span class="gradient-text">Lys</span></h1>
+            <p class="hero-subtext" data-i18n="heroSub">Bem-vindo ao meu espaço pessoal! Aqui compartilho um pouco sobre
+                as músicas que eu gosto, meus jogos favoritos e os times que torço com paixão (ou dor).</p>
+            <a href="#start_music_div" class="scroll-indicator">
+                <span data-i18n="scrollBtn">Conheça meus gostos</span>
+                <span class="arrow-down">↓</span>
+            </a>
+        </section>
 
-            <div class="terceira_musica_container reveal">
-                <img src="https://i.scdn.co/image/ab67616d0000b27304ffe1d164f635da3eec5110" alt=""
-                    id="terceira_musica_img">
-                <p class="music_description">Genesis - Anny</p>
-                <a href="https://open.spotify.com/intl-pt/track/5BVhAG8vbUfscdw4kaujiy?si=24f82f8539c6467e"
-                    class="play_button_terceira_musica" target="_blank">
-                    <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png"
-                        alt="" id="play_button_img_terceira_musica">
-                </a>
-            </div>
-        </div>
-    </div>
+        <!-- Sessão de Músicas -->
+        <section class="music">
+            <h2 id="start_music_div" class="reveal section-title"><span data-i18n="musicTitle">Minhas Músicas
+                    Favoritas</span>
+            </h2>
 
-    <div class="favorite_games">
-        <h1 id="start_favorite_games_div" class="reveal">esses são meus jogos favoritos</h1>
-        <div class="game_list">
-            <div class="game_container reveal">
-                <h1 id="game1_number">1.</h1>
-                <img src="https://store-images.s-microsoft.com/image/apps.14201.13954357069416596.71820caf-5071-4e6f-b296-1110909183a0.11ed8714-18c7-48cf-989a-40e2da88530b"
-                    alt="Neva">
-                <p>Neva</p>
-            </div>
-            <div class="game_container reveal">
-                <h1 id="game2_number">2.</h1>
-                <img src="https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png"
-                    alt="Red dead redemption 2">
-                <p>Red dead redemption 2</p>
-            </div>
-            <div class="game_container reveal">
-                <h1 id="game3_number">3.</h1>
-                <img src="https://cdn.ezcosplay.com/media/catalog/product/3/2/3263274_1703585847_1.jpg"
-                    alt="Homura Hime">
-                <p>Homura Hime</p>
-            </div>
-        </div>
-    </div>
+            <div class="music_list">
+                <div class="too_sweat_container music_card reveal">
+                    <div class="album-wrapper">
+                        <div class="vinyl-grooves"></div>
+                        <img src="https://i.scdn.co/image/ab67616d0000b273be392334d99f82bc410cb239"
+                            alt="Too Sweet - Hozier" class="music_cover" id="too_sweat_img">
+                    </div>
+                    <div class="music_info">
+                        <p class="music_description">Too Sweet</p>
+                        <span class="music_artist">Hozier</span>
+                    </div>
+                    <a href="https://open.spotify.com/intl-pt/track/3HMY0r2BAdpasXMY8rseR0?si=289240074a854832"
+                        class="play_button" target="_blank" title="Ouvir no Spotify">
+                        <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png"
+                            alt="Spotify" id="play_button_img">
+                        <span data-i18n="listenSpotify">Ouvir no Spotify</span>
+                    </a>
+                </div>
 
-    <div class="Team">
-        <h1 id="start_team_div" class="reveal">times:</h1>
-        <div class="team_list">
-            <div class="team_container reveal">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR36OaOvgGTBT8AquHD8Hb0KAjHHgI0OCE3VQ&s"
-                    alt="McLaren F1 team">
-                <p>McLaren F1 team</p>
-            </div>
-            <div class="team_container reveal">
-                <img src="https://pbs.twimg.com/media/FlligLwWQAEXZh9.jpg" alt="McLaren Arrow Indycar Team">
-                <p>McLaren Arrow Indycar Team</p>
-            </div>
-        </div>
-    </div>
+                <div class="a_ultima_lagrima_container music_card reveal">
+                    <div class="album-wrapper">
+                        <div class="vinyl-grooves"></div>
+                        <img src="https://i.scdn.co/image/ab67616d0000b273f107649846921b409dd7e1bd"
+                            alt="A Última Lágrima - Alec'" class="music_cover" id="a_ultima_lagrima_img">
+                    </div>
+                    <div class="music_info">
+                        <p class="music_description">A Última Lágrima</p>
+                        <span class="music_artist">Alec'</span>
+                    </div>
+                    <a href="https://open.spotify.com/intl-pt/track/6fX0OOsIIDSHfogMl10XEi?si=5cc36d51b06e4f42"
+                        class="play_button_a_ultima_lagrima play_button" target="_blank" title="Ouvir no Spotify">
+                        <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png"
+                            alt="Spotify" id="play_button_img_a_ultima_lagrima">
+                        <span data-i18n="listenSpotify">Ouvir no Spotify</span>
+                    </a>
+                </div>
 
+                <div class="terceira_musica_container music_card reveal">
+                    <div class="album-wrapper">
+                        <div class="vinyl-grooves"></div>
+                        <img src="https://i.scdn.co/image/ab67616d0000b27304ffe1d164f635da3eec5110" alt="Genesis - Anny"
+                            class="music_cover" id="terceira_musica_img">
+                    </div>
+                    <div class="music_info">
+                        <p class="music_description">Genesis</p>
+                        <span class="music_artist">Anny</span>
+                    </div>
+                    <a href="https://open.spotify.com/intl-pt/track/5BVhAG8vbUfscdw4kaujiy?si=24f82f8539c6467e"
+                        class="play_button_terceira_musica play_button" target="_blank" title="Ouvir no Spotify">
+                        <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png"
+                            alt="Spotify" id="play_button_img_terceira_musica">
+                        <span data-i18n="listenSpotify">Ouvir no Spotify</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sessão de Jogos -->
+        <section class="favorite_games">
+            <h2 id="start_favorite_games_div" class="reveal section-title"><span data-i18n="gamesTitle">Meus Jogos
+                    Favoritos</span>
+            </h2>
+            <div class="game_list">
+                <div class="game_container reveal">
+                    <div class="rank-badge" id="game1_number">#1</div>
+                    <div class="game-img-box">
+                        <img src="https://store-images.s-microsoft.com/image/apps.14201.13954357069416596.71820caf-5071-4e6f-b296-1110909183a0.11ed8714-18c7-48cf-989a-40e2da88530b"
+                            alt="Neva">
+                        <div class="game-card-overlay">
+                            <span>Artístico / Aventura</span>
+                        </div>
+                    </div>
+                    <p class="game-name">Neva</p>
+                </div>
+                <div class="game_container reveal">
+                    <div class="rank-badge" id="game2_number">#2</div>
+                    <div class="game-img-box">
+                        <img src="https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png"
+                            alt="Red dead redemption 2">
+                        <div class="game-card-overlay">
+                            <span>Ação / Mundo Aberto</span>
+                        </div>
+                    </div>
+                    <p class="game-name">Red Dead Redemption 2</p>
+                </div>
+                <div class="game_container reveal">
+                    <div class="rank-badge" id="game3_number">#3</div>
+                    <div class="game-img-box">
+                        <img src="https://cdn.ezcosplay.com/media/catalog/product/3/2/3263274_1703585847_1.jpg"
+                            alt="Homura Hime">
+                        <div class="game-card-overlay">
+                            <span>Ação 3D / Anime</span>
+                        </div>
+                    </div>
+                    <p class="game-name">Homura Hime</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sessão de Times -->
+        <section class="Team">
+            <h2 id="start_team_div" class="reveal section-title"><span data-i18n="teamsTitle">Times do Coração</span>
+            </h2>
+            <div class="team_list">
+                <div class="team_container reveal">
+                    <div class="team-tag">Fórmula 1</div>
+                    <div class="team-img-box">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR36OaOvgGTBT8AquHD8Hb0KAjHHgI0OCE3VQ&s"
+                            alt="McLaren F1 team">
+                    </div>
+                    <p class="team-name">McLaren F1 Team</p>
+                </div>
+                <div class="team_container reveal">
+                    <div class="team-tag">IndyCar</div>
+                    <div class="team-img-box">
+                        <img src="https://pbs.twimg.com/media/FlligLwWQAEXZh9.jpg" alt="McLaren Arrow Indycar Team">
+                    </div>
+                    <p class="team-name">McLaren Arrow IndyCar</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
     <footer>
-        <p>feito com ❤️ por Lys</p>
-        <div class="social_links">
-            <a href="https://x.com/ssuplys" class="social_button" target="_blank" title="X (Twitter)">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X (Twitter)"
-                    class="social_img">
-            </a>
-            <a href="#" onclick="event.preventDefault();" class="social_button" title="Discord">
-                <img src="https://cdn.pixabay.com/photo/2022/10/09/17/21/discord-7509681_1280.png" alt="Discord"
-                    class="social_img">
-                <span class="tooltip_text">@ssuplys</span>
-            </a>
-            <a href="https://github.com/ssuplys" class="social_button" target="_blank" title="GitHub">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub"
-                    class="social_img">
-            </a>
+        <div class="footer-content">
+            <p><span data-i18n="footerHeart">Feito com</span> <span class="heart-icon">❤️</span> <span
+                    data-i18n="footerBy">por</span> <strong>Lys</strong></p>
+            <div class="social_links">
+                <a href="https://x.com/ssuplys" class="social_button" target="_blank" title="X (Twitter)"
+                    aria-label="X (Twitter)">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X (Twitter)"
+                        class="social_img">
+                </a>
+                <a href="#"
+                    onclick="event.preventDefault(); navigator.clipboard.writeText('@ssuplys'); alert('Discord copiado: @ssuplys');"
+                    class="social_button" title="Discord" aria-label="Discord">
+                    <img src="https://cdn.pixabay.com/photo/2022/10/09/17/21/discord-7509681_1280.png" alt="Discord"
+                        class="social_img">
+                    <span class="tooltip_text" data-i18n="copyDiscord">@ssuplys</span>
+                </a>
+                <a href="https://github.com/ssuplys" class="social_button" target="_blank" title="GitHub"
+                    aria-label="GitHub">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub"
+                        class="social_img">
+                </a>
+            </div>
         </div>
     </footer>
 </body>

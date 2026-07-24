@@ -1,73 +1,24 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Outfit', sans-serif;
-}
+/* Importa os tokens do sistema de design */
+@import url('aboutstyle.css');
 
 body {
-    background-color: #fffafb;
-    background-image: radial-gradient(at 10% 20%, rgba(255, 182, 193, 0.4) 0px, transparent 50%), radial-gradient(at 90% 80%, rgba(255, 228, 225, 0.6) 0px, transparent 50%), radial-gradient(at 50% 50%, rgba(255, 240, 245, 0.8) 0px, transparent 70%);
-    color: #5c434a;
+    background-color: var(--bg-primary);
+    color: var(--text-dark);
     overflow: hidden;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-.loading-screen {
+.index-controls {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fffafb;
+    top: 24px;
+    right: 24px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
-}
-
-.loader-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-}
-
-.logo-symbol {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem;
-    font-weight: 700;
-    color: #ff3385;
-    transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.8s ease;
-}
-
-.logo-symbol.expand {
-    transform: translateY(-20px) scale(1.1);
-    opacity: 0;
-}
-
-.progress-bar-container {
-    width: 260px;
-    height: 4px;
-    background-color: rgba(255, 182, 193, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: opacity 0.4s ease;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: #ff3385;
-    border-radius: 10px;
-}
-
-.progress-bar-container.fade-out {
-    opacity: 0;
+    gap: 12px;
+    z-index: 100;
 }
 
 .home-page {
@@ -76,10 +27,11 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transform: translateY(40px) scale(0.95);
+    transform: translateY(30px) scale(0.96);
     transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     padding: 20px;
     width: 100%;
+    z-index: 10;
 }
 
 .home-page.visible {
@@ -87,100 +39,94 @@ body {
     transform: translateY(0) scale(1);
 }
 
-.hidden {
-    display: none !important;
-}
-
 .glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 40px;
-    padding: 4rem 5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: 4.5rem 4rem;
     text-align: center;
-    box-shadow: 0 30px 60px rgba(255, 182, 193, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-soft);
     position: relative;
     overflow: hidden;
+    max-width: 580px;
+    width: 100%;
+    transition: transform var(--transition-normal);
 }
 
-.glass-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 60%);
-    pointer-events: none;
-    opacity: 0.5;
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
+.brand-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    background: rgba(255, 182, 193, 0.25);
+    color: var(--accent-pink);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--glass-border-pink);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.welcome-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1.2rem;
-    color: #ff3385;
-    background: linear-gradient(135deg, #ff3385, #ff8da1);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-dark);
+    line-height: 1.2;
 }
 
-p {
+.sparkle {
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+.welcome-desc {
     font-size: 1.2rem;
-    color: #8c737b;
-    max-width: 420px;
-    line-height: 1.8;
-    margin: 0 auto;
+    color: var(--text-body);
+    max-width: 440px;
+    line-height: 1.7;
+    margin: 0 auto 2.5rem;
     font-weight: 300;
 }
 
-.btn {
+.btn-glow {
     display: inline-block;
-    margin-top: 2rem;
     padding: 16px 36px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #fff;
-    background: linear-gradient(135deg, #ff3385, #ff7eb3);
-    border-radius: 50px;
+    font-family: var(--font-ui);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    border-radius: var(--radius-pill);
     text-decoration: none;
-    box-shadow: 0 10px 25px rgba(255, 51, 133, 0.3);
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(255, 51, 133, 0.35);
+    transition: all var(--transition-fast);
 }
 
-.btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
-    opacity: 0;
-    transition: opacity 0.4s;
-}
-
-.btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 35px rgba(255, 51, 133, 0.4);
-    color: #fff;
-}
-
-.btn:hover::after {
-    opacity: 1;
+.btn-glow:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 15px 35px rgba(255, 51, 133, 0.5);
+    color: #ffffff;
 }
 
 @media (max-width: 768px) {
-    h1 {
-        font-size: 3rem;
-    }
     .glass-card {
         padding: 3rem 2rem;
-        border-radius: 30px;
+        border-radius: var(--radius-lg);
+    }
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+    .welcome-desc {
+        font-size: 1.05rem;
     }
 }

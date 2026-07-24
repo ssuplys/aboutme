@@ -1,336 +1,64 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Outfit', sans-serif;
-    scrollbar-width: thin;
-    scrollbar-color: #ffb6c1 #fffafb;
-}
+/* Importa os tokens globais e estilos da base de sobre */
+@import url('aboutstyle.css');
 
-body {
-    background-color: #fffafb;
-    background-image: radial-gradient(circle at 15% 50%, rgba(255, 230, 240, 0.7), transparent 40%), radial-gradient(circle at 85% 30%, rgba(255, 240, 245, 0.8), transparent 50%);
-    color: #5c434a;
-    overflow-x: hidden;
-    min-height: 100vh;
-}
-
-.loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fffafb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
-}
-
-.loader-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-}
-
-.logo-symbol {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem;
-    font-weight: 700;
-    color: #ff3385;
-    transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.8s ease;
-}
-
-.logo-symbol.expand {
-    transform: translateY(-20px) scale(1.1);
-    opacity: 0;
-}
-
-.progress-bar-container {
-    width: 260px;
-    height: 4px;
-    background-color: rgba(255, 182, 193, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: opacity 0.4s ease;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: #ff3385;
-    border-radius: 10px;
-}
-
-.progress-bar-container.fade-out {
-    opacity: 0;
-}
-
-.hidden {
-    display: none !important;
-}
-
-h1 {
-    font-family: 'Playfair Display', serif;
-    color: #ff3385;
-}
-
-p {
-    font-size: 1.2rem;
-    color: #8c737b;
-    line-height: 1.8;
-    font-weight: 300;
+/* ==========================================================================
+   Seção de Projetos — Grid & Estado Vazio
+   ========================================================================== */
+.projects-section {
+    max-width: 1240px;
     margin: 0 auto;
-}
-
-header {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px 30px;
-    z-index: 1500;
-    pointer-events: none;
-}
-
-#header-h1 {
-    font-size: 2.5rem;
-    color: #ff3385;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
-    cursor: pointer;
-    pointer-events: auto;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    margin: 0;
-}
-
-#header-h1:hover {
-    transform: scale(1.1);
-    box-shadow: 0 15px 35px rgba(255, 182, 193, 0.6);
-}
-
-.side-menu {
-    height: 100vh;
-    width: 320px;
-    position: fixed;
-    top: 0;
-    right: -320px;
-    background: rgba(255, 250, 251, 0.95);
-    backdrop-filter: blur(25px);
-    border-left: 1px solid rgba(255, 182, 193, 0.3);
-    box-shadow: -15px 0 40px rgba(255, 182, 193, 0.15);
-    transition: right 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 2000;
-}
-
-.side-menu.open {
-    right: 0;
-}
-
-.side-menu ul {
-    list-style: none;
-    padding: 0 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.side-menu ul li a {
-    text-decoration: none;
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: #ccaeb8;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-}
-
-.side-menu ul li a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0%;
-    height: 2px;
-    background: #ff3385;
-    transition: width 0.4s ease;
-}
-
-.side-menu ul li a:hover {
-    color: #ff3385;
-    transform: translateX(15px);
-}
-
-.side-menu ul li a:hover::after {
+    padding: 2rem 2rem 6rem;
     width: 100%;
 }
 
-.active_menu {
-    color: #ff3385 !important;
-    font-weight: 700;
-}
-
-.side-menu .close-btn {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    font-size: 2.5rem;
-    background: none;
-    border: none;
-    color: #ccaeb8;
-    cursor: pointer;
-    transition: all 0.4s;
-    font-family: 'Outfit', sans-serif;
-}
-
-.side-menu .close-btn:hover {
-    color: #ff3385;
-    transform: scale(1.2);
-}
-
-.start-presentation {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.empty-projects-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px dashed var(--glass-border-pink);
+    border-radius: var(--radius-xl);
+    padding: 80px 40px;
     text-align: center;
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    margin-bottom: 200px;
-}
-
-#hi {
-    font-size: 5.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.start-presentation p {
-    font-size: 1.5rem;
     max-width: 600px;
-}
-
-.reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-footer {
+    margin: 0 auto;
+    box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background: #ffecf2;
-    padding: 6rem 2rem 4rem;
-    width: 100%;
-    margin-top: 100px;
-    color: #5c434a;
-    position: relative;
-    border-top-left-radius: 50% 100px;
-    border-top-right-radius: 50% 100px;
+    gap: 16px;
+    transition: transform var(--transition-normal);
 }
 
-footer p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-style: italic;
-    color: #ff3385;
+.empty-projects-container:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-pink);
 }
 
-.social_links {
-    display: flex;
-    gap: 2.5rem;
-    margin-top: 2.5rem;
+.empty-icon {
+    font-size: 3.5rem;
+    animation: bounce 2.5s infinite;
 }
 
-.social_button {
-    background: #fff;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.3);
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    position: relative;
+.empty-projects-container h3 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
 }
 
-.social_button:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.5);
-}
-
-.social_img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    filter: invert(34%) sepia(50%) saturate(6144%) hue-rotate(320deg) brightness(101%) contrast(106%);
-}
-
-.tooltip_text {
-    visibility: hidden;
-    background-color: #ff3385;
-    color: #fff;
-    text-align: center;
-    border-radius: 20px;
-    padding: 8px 16px;
-    position: absolute;
-    z-index: 100;
-    bottom: 130%;
-    left: 50%;
-    transform: translateX(-50%) translateY(15px);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    font-size: 0.95rem;
-    font-weight: 500;
-    font-family: 'Outfit';
-    box-shadow: 0 8px 20px rgba(255, 51, 133, 0.3);
-}
-
-.tooltip_text::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -6px;
-    border-width: 6px;
-    border-style: solid;
-    border-color: #ff3385 transparent transparent transparent;
-}
-
-.social_button:hover .tooltip_text {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+.empty-projects-container p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 440px;
+    line-height: 1.7;
 }
 
 @media (max-width: 768px) {
-    #hi {
-        font-size: 4rem;
+    .empty-projects-container {
+        padding: 50px 24px;
     }
-    footer {
-        border-top-left-radius: 30% 50px;
-        border-top-right-radius: 30% 50px;
+    .empty-projects-container h3 {
+        font-size: 1.8rem;
     }
 }
