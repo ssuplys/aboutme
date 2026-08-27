@@ -12,32 +12,58 @@
 }
 
 .empty-projects-container {
-    background: var(--glass-bg);
+    background: var(--glass-bg-cute);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 2px dashed var(--glass-border-pink);
-    border-radius: var(--radius-xl);
+    border: 2px dashed var(--glass-border-cute);
+    border-radius: var(--radius-super-cute);
     padding: 80px 40px;
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
-    box-shadow: var(--shadow-soft);
+    box-shadow: 
+        var(--shadow-cute),
+        0 0 20px rgba(255, 182, 193, 0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    transition: transform var(--transition-normal);
+    transition: all var(--transition-cute);
+    position: relative;
+    overflow: hidden;
 }
 
 .empty-projects-container:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-hover);
-    border-color: var(--accent-pink);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 
+        var(--shadow-cute-hover),
+        0 0 30px rgba(255, 182, 193, 0.1);
+    border-color: var(--accent-pink-pastel);
+}
+
+.empty-projects-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius-super-cute);
+    padding: 2px;
+    background: linear-gradient(135deg, var(--accent-pink-pastel), var(--accent-purple-pastel));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.4;
+    pointer-events: none;
 }
 
 .empty-icon {
     font-size: 3.5rem;
     animation: bounce 2.5s infinite;
+    text-shadow: 
+        0 0 15px var(--cute-sparkle),
+        0 0 25px var(--cute-sparkle);
 }
 
 .empty-projects-container h3 {
@@ -45,6 +71,10 @@
     font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-dark);
+    background: linear-gradient(135deg, var(--text-dark), var(--cute-peach));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .empty-projects-container p {
@@ -52,6 +82,7 @@
     color: var(--text-muted);
     max-width: 440px;
     line-height: 1.7;
+    text-shadow: 0 0 10px rgba(255, 182, 193, 0.1);
 }
 
 @media (max-width: 768px) {
