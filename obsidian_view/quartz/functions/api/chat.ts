@@ -1,19 +1,28 @@
-export async function onRequestPost(context) {
+interface ContentIndexItem {
+  title?: string;
+  content?: string;
+}
+
+interface ContentIndex {
+  [path: string]: ContentIndexItem;
+}
+
+export async function onRequestPost(context: any) {
   const { request, env } = context;
 
   try {
-    const { question } = await request.json();
+    const { question } = await request.json() as { question: string };
 
     // 1. Busca o arquivo de dados das notas do seu subdomínio
     const siteUrl = new URL(request.url).origin;
     const indexRes = await fetch(`${siteUrl}/static/contentIndex.json`);
-    const contentIndex = await indexRes.json();
+    const contentIndex = (await indexRes.json()) as ContentIndex;
 
     // 2. Agrupa o texto das notas para dar como base de conhecimento à IA
     let contextText = "";
-    for (const [path, data] of Object.entries(contentIndex)) {
-      if (data.content) {
-        contextText += `\n--- Nota: ${data.title} ---\n${data.content}\n`;
+    for (const [, data] of Object.entries(contentIndex)) {
+      if (data && data.content) {
+        contextText += `\n--- Nota: ${data.title ?? "Sem título"} ---\n${data.content}\n`;
       }
     }
 
