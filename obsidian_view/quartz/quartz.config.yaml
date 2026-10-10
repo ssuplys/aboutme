@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: priv_magia.ssuplys.xyz
+  baseUrl: quartz.ssuplys.xyz
   ignorePatterns:
     - private
     - templates
