@@ -13,6 +13,7 @@ import { BuildCtx } from "../../util/ctx"
 import { QuartzComponent } from "../../components/types"
 import { normalizeResource } from "../../util/resources"
 import { componentRegistry } from "../../components/registry"
+import Body from "../../components/Body"
 import {
   googleFontHref,
   googleFontSubsetHref,
@@ -47,6 +48,10 @@ function getComponentResources(ctx: BuildCtx): ComponentResources {
   for (const component of componentRegistry.getAllComponents()) {
     allComponents.add(component)
   }
+
+  // Body is always rendered, even though it is not part of the YAML layout.
+  // Include its resources so internal components can provide CSS and scripts.
+  allComponents.add(Body())
 
   const componentResources = {
     css: new Set<string>(),
