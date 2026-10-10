@@ -35,11 +35,11 @@ interface ContextChunk {
   score: number
 }
 
-const MODEL = "@cf/meta/llama-3.2-1b-instruct"
+const MODEL = "@cf/meta/llama-3.2-3b-instruct"
 const MAX_QUESTION_LENGTH = 500
-const MAX_CONTEXT_LENGTH = 10_000
-const MAX_HISTORY_MESSAGES = 6
-const MAX_OUTPUT_TOKENS = 300
+const MAX_CONTEXT_LENGTH = 48_000
+const MAX_HISTORY_MESSAGES = 4
+const MAX_OUTPUT_TOKENS = 400
 
 const STOP_WORDS = new Set([
   "a",
@@ -96,10 +96,18 @@ function terms(text: string): string[] {
 }
 
 function scoreText(text: string, searchTerms: string[]): number {
-  const normalized = normalize(text)
+  const words = normalize(text)
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean)
   return searchTerms.reduce((score, term) => {
-    const matches = normalized.match(new RegExp(`\\b${term}\\b`, "g"))?.length ?? 0
-    return score + matches
+    const exactMatches = words.filter((word) => word === term).length
+    const stem = term.length >= 6 ? term.slice(0, -2) : term
+    const approximateMatches =
+      stem.length >= 5
+        ? words.filter((word) => word !== term && (word.startsWith(stem) || stem.startsWith(word)))
+            .length
+        : 0
+    return score + exactMatches * 3 + approximateMatches
   }, 0)
 }
 
@@ -121,8 +129,6 @@ function splitIntoChunks(content: string): string[] {
 
 function findRelevantChunks(contentIndex: ContentIndex, question: string): ContextChunk[] {
   const searchTerms = terms(question)
-  if (searchTerms.length === 0) return []
-
   const chunks: ContextChunk[] = []
   for (const [path, data] of Object.entries(contentIndex)) {
     if (!data?.content) continue
@@ -130,11 +136,17 @@ function findRelevantChunks(contentIndex: ContentIndex, question: string): Conte
     const title = data.title ?? path.split("/").pop() ?? "Nota sem título"
     for (const content of splitIntoChunks(data.content)) {
       const score = scoreText(content, searchTerms) + scoreText(title, searchTerms) * 4
-      if (score > 0) chunks.push({ path, title, content, score })
+      chunks.push({ path, title, content, score })
     }
   }
 
-  return chunks.sort((left, right) => right.score - left.score).slice(0, 6)
+  const ranked = chunks.sort((left, right) => right.score - left.score)
+  const matches = ranked.filter((chunk) => chunk.score > 0)
+
+  // The current site is small enough to search the complete corpus as a fallback.
+  // This prevents a natural-language question from being rejected just because it
+  // used a different word form from the note.
+  return (matches.length > 0 ? matches : ranked).slice(0, 32)
 }
 
 function buildContext(chunks: ContextChunk[]): string {
