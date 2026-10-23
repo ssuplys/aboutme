@@ -1,2 +1,9 @@
-obsidian_view/
-obsidian_view/quartz/wrangler.jsonc
+# Ignore everything outside the main website.
+*
+
+# Keep the repository rules file.
+!.gitignore
+
+# Keep only the public main website and everything inside it.
+!main_website/
+!main_website/**
